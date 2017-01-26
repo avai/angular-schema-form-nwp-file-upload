@@ -149,10 +149,11 @@ angular
                                     var re = /\<Location\>https:\/\/(.*)\<\/Location\>/;
                                     var t1 = re.exec(data);
                                     var imageLocation = decodeURIComponent(t1[1]);
-                                    console.log(imageLocation);
+                                    var imagepath = imageLocation.split('s3.amazonaws.com/');
+                                    console.dir(imagepath[1]);
 
                                     file.result = response.data;
-                                    ngModel.$setViewValue(imageLocation);
+                                    ngModel.$setViewValue(imagepath[1])
                                     ngModel.$commitViewValue();
                                 }).error(function () {
                                     console.log("UPLOAD ERROR!!!");
