@@ -92,6 +92,7 @@ angular
 
                 scope.selectFile = function (file) {
                     scope.picFile = file;
+                    file && doUpload(file);
                 };
                 scope.selectFiles = function (files) {
                     scope.picFiles = files;
