@@ -83,12 +83,13 @@ angular
             require: 'ngModel',
             link: function (scope, element, attrs, ngModel) {
                 console.log("In ngSchemaFile directive");
-                console.dir(scope);
-                console.dir(scope.form);
 
                 scope.url = scope.form && scope.form.endpoint;
                 scope.authToken = scope.form && scope.form.authToken;
                 scope.isSinglefileUpload = scope.form && scope.form.schema && scope.form.schema.format === 'singlefile';
+
+                console.dir(scope);
+                console.dir(scope.form);
 
                 scope.selectFile = function (file) {
                     scope.picFile = file;
@@ -96,6 +97,9 @@ angular
                 };
                 scope.selectFiles = function (files) {
                     scope.picFiles = files;
+                    files.length && angular.forEach(files, function (file) {
+                        doUpload(file);
+                    });
                 };
 
                 scope.uploadFile = function (file) {
@@ -154,7 +158,7 @@ angular
                                     console.dir(imagepath[1]);
 
                                     file.result = response.data;
-                                    ngModel.$setViewValue(imagepath[1])
+                                    ngModel.$setViewValue(imagepath[1]);
                                     ngModel.$commitViewValue();
                                 }).error(function () {
                                     console.log("UPLOAD ERROR!!!");
