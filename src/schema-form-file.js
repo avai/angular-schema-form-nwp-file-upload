@@ -116,8 +116,6 @@ angular
                     console.log("In doUpload()");
                     console.dir(file);
                     console.dir(scope);
-                    var cleanedFilename = file.name.replace(/[^\w\d\.]+/gi, "_");
-                    console.log("Cleaned filename is: " + cleanedFilename);
                     if (file && !file.$error && scope.url) {
                         var query = {
                             filename: file.name,
@@ -145,7 +143,7 @@ angular
                                     },
                                     fields: response.data.fields, //credentials
                                     method: 'POST',
-                                    file: Upload.rename(file, cleanedFilename)
+                                    file: file
                                 }).progress(function (evt) {
                                     file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
                                     console.log('progress: ' + file.progress);
