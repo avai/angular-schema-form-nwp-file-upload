@@ -134,6 +134,7 @@ angular
                             function (response) {
                                 console.log("SUCCESS!!!");
                                 console.dir(response);
+                                Upload.setDefaults({ngfMinSize: 100});
                                 Upload.upload({
                                     url: response.data.url, //s3Url
                                     transformRequest: function (data, headersGetter) {
