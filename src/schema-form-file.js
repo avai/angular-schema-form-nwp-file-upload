@@ -135,7 +135,7 @@ angular
                                 console.log("SUCCESS!!!");
                                 console.dir(response);
                                 Upload.setDefaults({ngfMinSize: 100});
-                                console.log("Set upload minimum to 100 bytes");
+                                // console.log("Set upload minimum to 100 bytes");
                                 Upload.upload({
                                     url: response.data.url, //s3Url
                                     transformRequest: function (data, headersGetter) {
