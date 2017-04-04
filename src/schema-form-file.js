@@ -157,6 +157,9 @@ angular
                                     var t1 = re.exec(data);
                                     var imageLocation = decodeURIComponent(t1[1]);
                                     var imagepath = imageLocation.split('s3.amazonaws.com');
+                                    if (imagepath[0] !== '/') {
+                                        imagepath = '/' + imagepath;
+                                    }
                                     console.dir(imagepath[1]);
 
                                     file.result = response.data;
