@@ -156,7 +156,7 @@ angular
                                     var re = /\<Location\>https:\/\/(.*)\<\/Location\>/;
                                     var t1 = re.exec(data);
                                     var imageLocation = decodeURIComponent(t1[1]);
-                                    var imagepath = imageLocation.split('s3.amazonaws.com/');
+                                    var imagepath = imageLocation.split('s3.amazonaws.com');
                                     console.dir(imagepath[1]);
 
                                     file.result = response.data;
