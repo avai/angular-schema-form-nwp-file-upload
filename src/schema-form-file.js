@@ -159,7 +159,12 @@ angular
                                     var imagepath = imageLocation.split('s3.amazonaws.com');
                                     if (imagepath[1][0] !== '/') {
                                         imagepath[1] = '/' + imagepath[1];
+                                    } else if (imagepath[1][0] === '/' && imagepath[1][1] === '/') {
+                                        imagepath[1] = imagepath[1].substring(1);
                                     }
+                                    console.log("From schema-form-file:");
+                                    console.dir(imageLocation);
+                                    console.dir(imagepath);
                                     console.dir(imagepath[1]);
 
                                     file.result = response.data;
@@ -178,32 +183,6 @@ angular
                             }
                         );
                     }
-
-
-
-
-                    //     file.upload = Upload.upload({
-                    //         url: scope.url,
-                    //         file: file
-                    //     });
-
-                    //     file.upload.then(function (response) {
-                    //         $timeout(function () {
-                    //             file.result = response.data;
-                    //         });
-                            // ngModel.$setViewValue(response.data);
-                            // ngModel.$commitViewValue();
-                    //     }, function (response) {
-                            // if (response.status > 0) {
-                            //     scope.errorMsg = response.status + ': ' + response.data;
-                            // }
-                    //     });
-
-                    //     file.upload.progress(function (evt) {
-                    //         file.progress = Math.min(100, parseInt(100.0 *
-                    //             evt.loaded / evt.total));
-                    //     });
-                    // }
                 }
 
                 scope.validateField = function () {
